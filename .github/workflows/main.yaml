@@ -23,10 +23,9 @@ jobs:
     - name: 📂 Sync files    
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        server: ftp://160.153.155.191/
+        server: 160.153.155.191/
         username: saptarshioff
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ../DeepShiWeb/DeepShiWebPublish/  
+        password: ${{ secrets.FTP_PASSWORD }}       
         server-dir: DeepShi/
         log-level: verbose
         security: loose

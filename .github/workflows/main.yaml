@@ -1,0 +1,32 @@
+name: DeepShiWeb Build and Publishing
+
+on:
+  push:
+    branches: 
+      - main
+
+env:
+   DOTNET_VERSION: '5.0.301' # The .NET SDK version to use
+
+jobs:
+  publish:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: 📂 Sync files    
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: ftp://160.153.155.191/
+        username: saptarshioff
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ../DeepShiWeb/DeepShiWebPublish/  
+        server-dir: DeepShi/
+        log-level: verbose
+        security: loose

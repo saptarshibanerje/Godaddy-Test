@@ -15,10 +15,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
+   
 
     - name: 📂 Sync files    
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
@@ -29,3 +26,4 @@ jobs:
         server-dir: DeepShi/
         log-level: verbose
         security: loose
+        port: 22
